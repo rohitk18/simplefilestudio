@@ -1,0 +1,35 @@
+<div class="row" style="margin-bottom: 2rem;">
+    <div class="col-md-12">
+        <button mat-button (click)="goBack()">Back</button>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 2rem;">
+    <div class="col-md-12">
+        <app-fileupload [(pdfFile)]="pdfFile"></app-fileupload>
+    </div>
+</div>
+<div class="row" style="margin-bottom:2rem;" *ngIf="pdfFile != null">
+    <div class="col-md-12">
+        <h3>
+            Pages to extract: (Mention page numbers and ranges separated by comma) <br/>
+            Examples: <br/>
+            2-4,7 (Multiple and single pages) <br/>
+            12,9-4 (Even extracts reverse order also)<br/>
+        </h3>
+    </div>
+    <div class="col-md-4">
+        <input [(ngModel)]="pagesText" />
+    </div>
+    <!-- <div class="col-md-8" *ngIf="pagesText.invalid">
+        <p>Got an error</p>
+    </div> -->
+</div>
+<div class="row" style="margin-bottom:2rem;" *ngIf="pdfFile != null">
+    <div class="col-md-12">
+        <h3>Output file</h3>
+        <p><span><input matInput type="text" placeholder="File name" [(ngModel)] = "outfilename"/></span>.pdf</p>
+    </div>
+    <div class="col-md-12">
+        <button mat-flat-button color="primary" (click)="downloadOutputFile()">Download</button>
+    </div>
+</div>

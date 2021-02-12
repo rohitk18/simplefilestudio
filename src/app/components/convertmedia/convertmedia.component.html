@@ -1,0 +1,27 @@
+<div class="row" style="margin-bottom: 2rem;">
+    <div class="col-md-12">
+        <button mat-button (click)="goBack()">Back</button>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 2rem;">
+    <div class="col-md-12">
+        <app-fileupload (fileChange)="mediaFileChange($event)"></app-fileupload>
+    </div>
+</div>
+<div class="row" style="margin-bottom:2rem;" *ngIf="mediaFile != null">
+    <div class="col-md-12">
+        <h3>
+            Convert to:
+        <span>
+            <mat-select [(value)]="convertedCodec">
+                <mat-option *ngFor="let codec of validCodecs" [value]="codec">{{codec}}</mat-option>
+            </mat-select>
+        </span>
+        </h3>
+    </div>
+</div>
+<div class="row" style="margin-bottom:2rem;" *ngIf="mediaFile != null">
+<div class="col-md-12">
+    <button mat-flat-button color="primary" (click)="convertFile()">Convert</button>
+</div>
+</div>
